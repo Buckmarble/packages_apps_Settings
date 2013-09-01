@@ -189,4 +189,11 @@
         android:icon="@drawable/ic_settings_about"
         android:title="@string/about_settings" />
 
+    <!-- Superuser -->
+    <header
+        android:id="@+id/superuser"
+        android:fragment="com.android.settings.elite.superuser.PolicyNativeFragment"
+        android:icon="@drawable/ic_action_permission"
+        android:title="@string/superuser" />
+
 </preference-headers>
