@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 Android
+ * Copyright (C) 2013 DEMENTED Droid
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.elite;
+package com.android.settings.demented;
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 import android.os.Bundle;
