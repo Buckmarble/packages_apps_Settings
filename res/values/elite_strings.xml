@@ -17,7 +17,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- PERSONALIZATION Settings  -->
     <!-- Settings main menu category heading. Interface (Launcher, Themes, System). [CHAR LIMIT=40] -->
-    <string name="header_category_interface">DEMENTED Interface</string>
+    <string name="header_category_interface">Interface</string>
     
     <!-- Themes settings  -->
     <string name="themes_settings_title">Themes</string>
@@ -68,6 +68,10 @@
     <string name="battery_text_normal">Battery Color (Above 15%)</string>
     <string name="battery_text_low">Battery Color (Below 15%)</string>
 
+    <!-- Status bar notification count -->
+    <string name="status_bar_notif_count_title">Show notification count</string>
+    <string name="status_bar_notif_count_summary">Display number of pending notifications</string>
+
     <!-- Color picker -->
     <string name="dialog_color_picker">Color Picker</string>
     <string name="press_color_to_apply">Press on Color to apply</string>
@@ -77,3 +81,4 @@
     <string name="hex_hint">#FF000000</string>
     <string name="set">Set</string>
     <string name="ics_color">Holo</string>
+</resources>
