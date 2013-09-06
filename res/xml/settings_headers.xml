@@ -58,16 +58,16 @@
         android:fragment="com.android.settings.WirelessSettings"
         android:icon="@drawable/empty_icon" />
 
-   <!-- INTERFACE -->
-    <header android:id="@+id/interface_section"
-        android:title="@string/header_category_interface" />
+   <!-- Elite Settings -->
+    <header android:id="@+id/elite_settings_section"
+        android:title="@string/header_category_options" />
 
-    <!-- Statusbar -->
+    <!-- System -->
     <header
-        android:id="@+id/statusbar_settings"
-	android:icon="@drawable/ic_settings_statusbar"
-        android:fragment="com.android.settings.elite.StatusBar"
-        android:title="@string/status_bar_title" />
+        android:id="@+id/system_settings"
+        android:icon="@drawable/ic_settings_system"
+        android:fragment="com.android.settings.elite.SystemOptions"
+        android:title="@string/system_options_title" />
 
     <!-- Themes -->
     <header

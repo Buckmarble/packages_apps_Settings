@@ -1575,6 +1575,8 @@
         <!-- Elite activities Start -->
         <activity android:name=".elite.StatusBar" />
 
+        <activity android:name=".elite.SystemOptions" />
+
         <!-- Elite activities End -->
 
         <!-- Pseudo-activity used to provide an intent-filter entry point to encryption settings -->

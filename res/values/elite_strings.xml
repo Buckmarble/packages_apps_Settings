@@ -17,7 +17,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- PERSONALIZATION Settings  -->
     <!-- Settings main menu category heading. Interface (Launcher, Themes, System). [CHAR LIMIT=40] -->
-    <string name="header_category_interface">Interface</string>
+    <string name="header_category_options">Elite Settings</string>
     
     <!-- Themes settings  -->
     <string name="themes_settings_title">Themes</string>
@@ -81,4 +81,8 @@
     <string name="hex_hint">#FF000000</string>
     <string name="set">Set</string>
     <string name="ics_color">Holo</string>
+    
+    <!--System Options-->
+    <string name="system_options">System Options</string>
+    <string name="system_options_title">System</string>
 </resources>
