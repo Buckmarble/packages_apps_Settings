@@ -85,4 +85,8 @@
     <!--System Options-->
     <string name="system_options">System Options</string>
     <string name="system_options_title">System</string>
+
+    <!--Volume button music controls-->
+    <string name="volbtn_music_controls_title">Volume rocker music controls</string>
+    <string name="volbtn_music_controls_summary">When screen off, long-pressing the volume rockers will seek music tracks</string>
 </resources>
