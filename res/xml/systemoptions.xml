@@ -21,10 +21,8 @@
 
     <PreferenceScreen
         android:id="@+id/statusbar_settings"
+	android:icon="@drawable/ic_settings_statusbar"
         android:fragment="com.android.settings.elite.StatusBar"
         android:title="@string/status_bar_title" />
 
-    <PreferenceScreen
-        android:fragment="com.android.settings.elite.InterfaceSettings"
-        android:title="@string/interface_settings_title" />
 </PreferenceScreen>
