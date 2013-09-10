@@ -85,16 +85,13 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_VOLBTN_MUSIC_CTRL = "volbtn_music_controls";
     private static final String KEY_QUIET_HOURS = "quiet_hours";
 
-    private static final String[] NEED_VOICE_CAPABILITY = {
-            KEY_RINGTONE, KEY_DTMF_TONE, KEY_CATEGORY_CALLS,
-            KEY_EMERGENCY_TONE, KEY_VIBRATE
     private static final String SILENT_MODE_OFF = "off";
     private static final String SILENT_MODE_VIBRATE = "vibrate";
     private static final String SILENT_MODE_MUTE = "mute";
 
     private static final String[] NEED_VOICE_CAPABILITY = {
             KEY_RINGTONE, KEY_DTMF_TONE, KEY_CATEGORY_CALLS,
-            KEY_EMERGENCY_TONE, KEY_INCREASING_RING
+            KEY_EMERGENCY_TONE, KEY_INCREASING_RING, KEY_VIBRATE
     };
 
     private static final int MSG_UPDATE_RINGTONE_SUMMARY = 1;
@@ -182,6 +179,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         if (getResources().getBoolean(com.android.internal.R.bool.config_useFixedVolume)) {
             // device with fixed volume policy, do not display volumes submenu
             getPreferenceScreen().removePreference(findPreference(KEY_RING_VOLUME));
+        }
         mQuietHours = (PreferenceScreen) findPreference(KEY_QUIET_HOURS);
         if (Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_ENABLED, 0) == 1) {
             mQuietHours.setSummary(getString(R.string.quiet_hours_active_from) + " " +
