@@ -99,6 +99,11 @@
             android:requiredForAllUsers="true"
             android:supportsRtl="true">
 
+        <receiver android:name=".darkslide.LockscreenInterface$DeviceAdminLockscreenReceiver"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data android:name="android.app.device_admin"
+                android:resource="@xml/device_admin_lockscreen" />
+        </receiver>
      <!-- Only system/su can open this activity -->
         <!-- This activity will then call the MultitaskSuRequestActivity to create a new task stack -->
         <activity
@@ -1638,13 +1643,15 @@
             android:theme="@style/CryptKeeperBlankTheme"
         />
 
+        <activity android:name=".darkslide.LockscreenInterface" />
+
         <!-- Pseudo-activity used to provide an intent-filter entry point to encryption settings -->
         <activity android:name="Settings$CryptKeeperSettingsActivity"
                 android:label="@string/crypt_keeper_encrypt_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.app.action.START_ENCRYPTION" />
-                <category android:name="android.intent.category.DEFAULT" /> />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.CryptKeeperSettings" />

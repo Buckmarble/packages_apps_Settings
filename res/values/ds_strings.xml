@@ -2,6 +2,8 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <string name="lock_screen_title">Lock / Home screen</string>
+
     <!-- Advanced reboot options -->
     <string name="advanced_reboot_title">Advanced reboot</string>
     <string name="advanced_reboot_summary">When unlocked, include options in the power menu for rebooting into recovery or bootloader</string>
@@ -20,6 +22,16 @@
     <string name="bluetooth_sap_profile_summary_use_for">Use for SIM Access</string>
     <!-- Bluetooth settings.  Connection options screen.  The summary for the DUN checkbox preference that describes how checking it will set the DUN profile as preferred. -->
     <string name="bluetooth_dun_profile_summary_use_for">Use for Dial-up Network Access</string>
+
+    <!--- Lock clock -->
+    <string name="lock_clock_title">Clock widget</string>
+    <string name="lock_clock_summary">Customize the Home screen clock/weather widget</string>
+
+    <!-- Lock screen widgets -->
+    <string name="lockscreen_widgets_category_title">Widgets</string>
+
+    <!-- Themes settings -->
+    <string name="themes_settings_title">Themes</string>
 
 </resources>
 
