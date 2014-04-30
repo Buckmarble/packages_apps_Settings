@@ -33,6 +33,8 @@
     <!-- Themes settings -->
     <string name="themes_settings_title">Themes</string>
 
+    <!-- Bluetooth accept all Filestypes -->
+    <string name="bluetooth_accept_all_files">Accept all file types</string>
 </resources>
 
 
