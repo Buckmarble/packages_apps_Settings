@@ -16,56 +16,6 @@
 
 package com.android.settings;
 
-import android.accounts.Account;
-import android.accounts.AccountManager;
-import android.accounts.OnAccountsUpdateListener;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.admin.DevicePolicyManager;
-import android.content.BroadcastReceiver;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.ResolveInfo;
-import android.graphics.drawable.Drawable;
-import android.nfc.NfcAdapter;
-import android.os.Bundle;
-import android.os.INetworkManagementService;
-import android.os.RemoteException;
-import android.os.ServiceManager;
-import android.os.UserHandle;
-import android.os.UserManager;
-import android.preference.Preference;
-import android.preference.PreferenceActivity;
-import android.preference.PreferenceFragment;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.ListAdapter;
-import android.widget.Switch;
-import android.widget.TextView;
-
-import com.android.internal.util.ArrayUtils;
-import com.android.settings.accessibility.AccessibilitySettings;
-import com.android.settings.accessibility.CaptionPropertiesFragment;
-import com.android.settings.accessibility.ToggleAccessibilityServicePreferenceFragment;
-import com.android.settings.accounts.AccountSyncSettings;
-import com.android.settings.accounts.AuthenticatorHelper;
-import com.android.settings.accounts.ManageAccountsSettings;
 import com.android.settings.applications.AppOpsSummary;
 import com.android.settings.applications.ManageApplications;
 import com.android.settings.applications.ProcessStatsUi;
@@ -101,7 +51,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Top-level settings activity to handle single pane and double pane UI layout.
+ * Top-level Settings activity
  */
 public class Settings extends PreferenceActivity
         implements ButtonBarHandler, OnAccountsUpdateListener {
@@ -1059,64 +1009,85 @@ public class Settings extends PreferenceActivity
     public static void requestHomeNotice() {
         sShowNoHomeNotice = true;
     }
+public class Settings extends SettingsActivity {
 
     /*
-     * Settings subclasses for launching independently.
-     */
-    public static class BluetoothSettingsActivity extends Settings { /* empty */ }
-    public static class WirelessSettingsActivity extends Settings { /* empty */ }
-    public static class TetherSettingsActivity extends Settings { /* empty */ }
-    public static class VpnSettingsActivity extends Settings { /* empty */ }
-    public static class DateTimeSettingsActivity extends Settings { /* empty */ }
-    public static class StorageSettingsActivity extends Settings { /* empty */ }
-    public static class WifiSettingsActivity extends Settings { /* empty */ }
-    public static class WifiP2pSettingsActivity extends Settings { /* empty */ }
-    public static class InputMethodAndLanguageSettingsActivity extends Settings { /* empty */ }
-    public static class KeyboardLayoutPickerActivity extends Settings { /* empty */ }
-    public static class InputMethodAndSubtypeEnablerActivity extends Settings { /* empty */ }
-    public static class SpellCheckersSettingsActivity extends Settings { /* empty */ }
-    public static class LocalePickerActivity extends Settings { /* empty */ }
-    public static class UserDictionarySettingsActivity extends Settings { /* empty */ }
-    public static class SoundSettingsActivity extends Settings { /* empty */ }
-    public static class DisplaySettingsActivity extends Settings { /* empty */ }
-    public static class DeviceInfoSettingsActivity extends Settings { /* empty */ }
-    public static class ApplicationSettingsActivity extends Settings { /* empty */ }
-    public static class ManageApplicationsActivity extends Settings { /* empty */ }
-    public static class AppOpsSummaryActivity extends Settings {
+    * Settings subclasses for launching independently.
+    */
+    public static class BluetoothSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class WirelessSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class SimSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class TetherSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class VpnSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class DateTimeSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class StorageSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class WifiSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class WifiP2pSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class InputMethodAndLanguageSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class KeyboardLayoutPickerActivity extends SettingsActivity { /* empty */ }
+    public static class InputMethodAndSubtypeEnablerActivity extends SettingsActivity { /* empty */ }
+    public static class VoiceInputSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class SpellCheckersSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class LocalePickerActivity extends SettingsActivity { /* empty */ }
+    public static class UserDictionarySettingsActivity extends SettingsActivity { /* empty */ }
+    public static class HomeSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class DisplaySettingsActivity extends SettingsActivity { /* empty */ }
+    public static class DeviceInfoSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class ApplicationSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class ManageApplicationsActivity extends SettingsActivity { /* empty */ }
+    public static class AppOpsSummaryActivity extends SettingsActivity {
         @Override
         public boolean isValidFragment(String className) {
             if (AppOpsSummary.class.getName().equals(className)) {
                 return true;
             }
             return super.isValidFragment(className);
-        }
+            }
     }
-    public static class StorageUseActivity extends Settings { /* empty */ }
-    public static class DevelopmentSettingsActivity extends Settings { /* empty */ }
-    public static class AccessibilitySettingsActivity extends Settings { /* empty */ }
-    public static class CaptioningSettingsActivity extends Settings { /* empty */ }
-    public static class SecuritySettingsActivity extends Settings { /* empty */ }
-    public static class LocationSettingsActivity extends Settings { /* empty */ }
-    public static class PrivacySettingsActivity extends Settings { /* empty */ }
-    public static class RunningServicesActivity extends Settings { /* empty */ }
-    public static class ManageAccountsSettingsActivity extends Settings { /* empty */ }
-    public static class PowerUsageSummaryActivity extends Settings { /* empty */ }
-    public static class AccountSyncSettingsActivity extends Settings { /* empty */ }
-    public static class AccountSyncSettingsInAddAccountActivity extends Settings { /* empty */ }
-    public static class CryptKeeperSettingsActivity extends Settings { /* empty */ }
-    public static class DeviceAdminSettingsActivity extends Settings { /* empty */ }
-    public static class DataUsageSummaryActivity extends Settings { /* empty */ }
-    public static class AdvancedWifiSettingsActivity extends Settings { /* empty */ }
-    public static class TextToSpeechSettingsActivity extends Settings { /* empty */ }
-    public static class AndroidBeamSettingsActivity extends Settings { /* empty */ }
-    public static class WifiDisplaySettingsActivity extends Settings { /* empty */ }
-    public static class DreamSettingsActivity extends Settings { /* empty */ }
-    public static class NotificationStationActivity extends Settings { /* empty */ }
-    public static class UserSettingsActivity extends Settings { /* empty */ }
-    public static class NotificationAccessSettingsActivity extends Settings { /* empty */ }
-    public static class UsbSettingsActivity extends Settings { /* empty */ }
-    public static class TrustedCredentialsSettingsActivity extends Settings { /* empty */ }
-    public static class PaymentSettingsActivity extends Settings { /* empty */ }
-    public static class PrintSettingsActivity extends Settings { /* empty */ }
-    public static class PrintJobSettingsActivity extends Settings { /* empty */ }
+    public static class StorageUseActivity extends SettingsActivity { /* empty */ }
+    public static class DevelopmentSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class AccessibilitySettingsActivity extends SettingsActivity { /* empty */ }
+    public static class CaptioningSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class AccessibilityInversionSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class AccessibilityContrastSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class AccessibilityDaltonizerSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class SecuritySettingsActivity extends SettingsActivity { /* empty */ }
+    public static class UsageAccessSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class LocationSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class PrivacySettingsActivity extends SettingsActivity { /* empty */ }
+    public static class RunningServicesActivity extends SettingsActivity { /* empty */ }
+    public static class ManageAccountsSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class PowerUsageSummaryActivity extends SettingsActivity { /* empty */ }
+    public static class BatterySaverSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class AccountSyncSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class AccountSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class AccountSyncSettingsInAddAccountActivity extends SettingsActivity { /* empty */ }
+    public static class CryptKeeperSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class DeviceAdminSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class DataUsageSummaryActivity extends SettingsActivity { /* empty */ }
+    public static class AdvancedWifiSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class SavedAccessPointsSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class TextToSpeechSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class AndroidBeamSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class WifiDisplaySettingsActivity extends SettingsActivity { /* empty */ }
+    public static class DreamSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class NotificationStationActivity extends SettingsActivity { /* empty */ }
+    public static class UserSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class NotificationAccessSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class ConditionProviderSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class UsbSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class TrustedCredentialsSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class PaymentSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class PrintSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class PrintJobSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class ZenModeSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class NotificationSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class NotificationAppListActivity extends SettingsActivity { /* empty */ }
+    public static class AppNotificationSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class OtherSoundSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class QuickLaunchSettingsActivity extends SettingsActivity { /* empty */ }
+
+    public static class TopLevelSettings extends SettingsActivity { /* empty */ }
+    public static class ApnSettingsActivity extends SettingsActivity { /* empty */ }
 }
+
